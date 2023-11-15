@@ -17,11 +17,6 @@ Last, run the app's Streamlit app:
 ```
 cd app
 cd molecule_visualization
-```
-
-~~pip install -e . # install template as editable package (Skip this optional step)~~
-
-```
 streamlit run app.py 
 ```
 
