@@ -3,8 +3,8 @@
 First, make sure you installed things below
 
 * [Python 3.6+](https://www.python.org/downloads/)
-* [Node.js](https://nodejs.org)
-* [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+* ~~[Node.js](https://nodejs.org)~~
+* ~~[npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)~~
 
 Second, install required libraries:
 
@@ -17,13 +17,11 @@ Last, run the app's Streamlit app:
 ```
 cd app
 cd molecule_visualization
-```
-
-~~pip install -e . # install template as editable package (Skip this optional step)~~
-
-```
 streamlit run app.py 
 ```
+
+![Imgae fail to display](app/image/App Sceenshot.png)
+
 
 ## Helpful links
 
