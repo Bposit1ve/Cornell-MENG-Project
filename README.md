@@ -20,7 +20,7 @@ cd molecule_visualization
 streamlit run app.py 
 ```
 
-![Screenshot](app\Image\APP Screenshot.png)
+![Imgae fail to display](app/Image/App Sceenshot.png)
 
 
 ## Helpful links
