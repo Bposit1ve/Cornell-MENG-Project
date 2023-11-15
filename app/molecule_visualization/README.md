@@ -3,28 +3,26 @@
 ```
 cd app
 cd molecule_visualization
-```
-
-~~pip install -e . # install template as editable package (Skip this optional step)~~
-
-```
 streamlit run app.py 
 ```
 
 ## App Required Environment
+
+Check if you have these below:
+
 * [Python 3.6+](https://www.python.org/downloads/)
-* [Node.js](https://nodejs.org)
-* [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+* ~~[Node.js](https://nodejs.org)~~
+* ~~[npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)~~
 
-## First Time User
 
-Install required libraries
-```
-cd app
-```
 
-~~python3 -m venv venv (Skip this step)~~
+Libraries
 
+* [Streamlit](https://pypi.org/project/streamlit/)
+* [stmol](https://pypi.org/project/stmol/)
+* [rdkit](https://pypi.org/project/rdkit/)
+* [py3Dmol](https://pypi.org/project/py3Dmol/)
+  
 ```
 pip install streamlit stmol rdkit py3Dmol
 ```
