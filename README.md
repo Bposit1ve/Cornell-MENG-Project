@@ -1,24 +1,32 @@
+
 ## Get Started
 
-First, make sure you installed things below
+Check if you have the App Required Environment:
 
 * [Python 3.6+](https://www.python.org/downloads/)
 * ~~[Node.js](https://nodejs.org)~~
 * ~~[npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)~~
 
-Second, install required libraries:
+Libraries
 
+* [Streamlit](https://pypi.org/project/streamlit/)
+* [stmol](https://pypi.org/project/stmol/)
+* [rdkit](https://pypi.org/project/rdkit/)
+* [py3Dmol](https://pypi.org/project/py3Dmol/)
+  
 ```
 pip install streamlit stmol rdkit py3Dmol
 ```
 
-Last, run the app's Streamlit app:
+## How to run the App:
 
 ```
 cd app
 cd molecule_visualization
 streamlit run app.py 
 ```
+
+This app should look like this
 
 ![Screenshot](app/Image/Screenshot.png)
 
