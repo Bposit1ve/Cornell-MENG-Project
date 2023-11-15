@@ -20,7 +20,7 @@ cd molecule_visualization
 streamlit run app.py 
 ```
 
-![Screenshot](app\Image\Screenshot.png)
+![Screenshot](app/Image/Screenshot.png)
 
 
 ## Helpful links
