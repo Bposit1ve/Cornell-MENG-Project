@@ -1,0 +1,30 @@
+Overview
+
+    streamlit (st): The main library to create the web app. https://docs.streamlit.io/
+    stmol: A helper library for integrating 3D molecular visualizations (using py3Dmol) with Streamlit. https://github.com/napoles-uach/stmol
+    py3Dmol: A Python wrapper for 3Dmol.js, used for 3D molecular visualizations. https://github.com/3dmol/3Dmol.js
+    rdkit: A collection of cheminformatics and machine learning tools. Used here to handle molecules. https://www.rdkit.org/docs/
+
+
+
+py3Dmol(https://github.com/3dmol/3Dmol.js)
+    setStyle()
+        1. Stick Style
+            threeDview.setStyle({'stick': {'colorscheme': 'greenCarbon', 'radius': 0.15, 'opacity': 0.8}})
+            
+            colorscheme: Defines the color scheme, like 'greenCarbon', 'cyanCarbon', 'magentaCarbon', etc.
+            radius: The radius of the sticks (in Ångströms).
+            opacity: Transparency of the sticks, ranging from 0 (fully transparent) to 1 (fully opaque).
+
+        2. Sphere Style
+            threeDview.setStyle({'sphere': {'colorscheme': 'Jmol', 'scale': 0.3, 'opacity': 0.9}})
+            
+            colorscheme: Color scheme for the atoms.
+            scale: Size of the spheres relative to their van der Waals radii.
+            opacity: Transparency of the spheres.
+
+        3. Line Style
+            threeDview.setStyle({'line': {'colorscheme': 'Jmol', 'linewidth': 2}})
+
+            colorscheme: Color scheme for the lines.
+            linewidth: Width of the lines.
