@@ -4,6 +4,7 @@ import py3Dmol
 from rdkit import Chem
 from rdkit.Chem import AllChem
 from rdkit.Chem import Draw
+import streamlit as st
 
 # Predefined list of SMILES strings (add more as needed)
 smiles_options = [
@@ -13,15 +14,13 @@ smiles_options = [
     # Add more SMILES strings here
 ]
 
-def create_molecule_from_smiles(smi):
+def check_SMILES(smi):
     mol = Chem.MolFromSmiles(smi)
-    if mol is None:
-        raise ValueError("Could not parse SMILES string or invalid molecule structure")
-    return mol
+    return mol is not None 
 
 # Function to convert SMILES to 3D molecule block
 def makeblock(smi):
-    mol = create_molecule_from_smiles(smi)  # Converts a SMILES string to an RDKit molecule object.
+    mol = Chem.MolFromSmiles(smi)           # Converts a SMILES string to an RDKit molecule object.
     mol = Chem.AddHs(mol)                   # Adds hydrogen atoms to the molecule object.
     AllChem.EmbedMolecule(mol)              # Generates 3D coordinates for the molecule.
     mblock = Chem.MolToMolBlock(mol)        # Converts the RDKit molecule to a MolBlock, a text representation used by many chemistry software.
@@ -37,12 +36,24 @@ def render_mol_stick(xyz):
     threeDview.zoomTo()                                 # Adjusts the zoom so the entire molecule fits in the viewer.
     showmol(threeDview, height=600, width=800)         # Integrates the py3Dmol viewer into Streamlit's interface.
 
-# Function to render the 2D molecule
-def render_mol_2d(smi):
-    mol = create_molecule_from_smiles(smi)      # Converts the SMILES string to an RDKit molecule object
+# Function to create the 2D molecule
+def create_mol_2d(smi):
+    mol = Chem.MolFromSmiles(smi)               # Converts the SMILES string to an RDKit molecule object
     mol = Chem.AddHs(mol)                       # Adds hydrogen atoms to the molecule object.
     AllChem.Compute2DCoords(mol)                # Computes the 2D coordinates for the molecule, which are needed for 2D rendering
     # Converts the molecule object to an image representing the 2D structure
     img = Draw.MolToImage(mol, size=(800, 600), kekulize=True, wedgeBonds=True, dpi=500)                 
     return img
 
+# render 3D mol
+def  render_3d(smi):
+    st.markdown("### Molecule Structure")
+    st.markdown("Below is the 3D structure of the molecule:")
+    mol = makeblock(smi)
+    render_mol_stick(mol)
+
+# render 2D mol
+def render_2d(smi):
+    st.markdown("Below is the 2D structure of the molecule:")
+    img = create_mol_2d(smi)
+    st.image(img)
