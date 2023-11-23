@@ -17,8 +17,16 @@ if compound_smiles == 'customize':
 # update smiles string
 active_smiles = custom_smiles if custom_smiles else compound_smiles
 
+# Check for SMILES validity if custom SMILES is provided
+if compound_smiles == 'customize' and custom_smiles:
+    if not mol_helper.check_SMILES(custom_smiles):
+        st.error("Invalid SMILES string. (If you believe the string is correct, try uppercases)")
+    else:
+        # Render the molecule if valid
+        mol_helper.render_3d(active_smiles)
+        mol_helper.render_2d(active_smiles)
 
-if active_smiles:
-    # Render the molecule
+elif compound_smiles != 'customize':
+    # Render the molecule for predefined SMILES
     mol_helper.render_3d(active_smiles)
     mol_helper.render_2d(active_smiles)
