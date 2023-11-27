@@ -28,13 +28,15 @@ def makeblock(smi):
 
 # Function to render the 3D molecule
 def render_mol_stick(xyz):
-    threeDview = py3Dmol.view(height=600, width=800)   # Creates a new viewer object for rendering the 3D structure.
+    threeDview = py3Dmol.view(height=600, width=700)   # Creates a new viewer object for rendering the 3D structure.
     threeDview.addModel(xyz, 'mol')                     # Adds the molecule in MolBlock format to the viewer.
     # Sets the style for rendering the molecule.
     threeDview.setStyle({'stick': {'radius':0.15}, 'sphere': {'scale': 0.25}})             
     threeDview.setBackgroundColor('white')              # Sets the background color of the viewer.
     threeDview.zoomTo()                                 # Adjusts the zoom so the entire molecule fits in the viewer.
-    showmol(threeDview, height=600, width=800)         # Integrates the py3Dmol viewer into Streamlit's interface.
+    showmol(threeDview, height=600, width=700)         # Integrates the py3Dmol viewer into Streamlit's interface.
+    threeDview.resize()
+
 
 # Function to create the 2D molecule
 def create_mol_2d(smi):
@@ -42,18 +44,18 @@ def create_mol_2d(smi):
     mol = Chem.AddHs(mol)                       # Adds hydrogen atoms to the molecule object.
     AllChem.Compute2DCoords(mol)                # Computes the 2D coordinates for the molecule, which are needed for 2D rendering
     # Converts the molecule object to an image representing the 2D structure
-    img = Draw.MolToImage(mol, size=(800, 600), kekulize=True, wedgeBonds=True, dpi=500)                 
+    img = Draw.MolToImage(mol, size=(650, 600), kekulize=True, wedgeBonds=True, dpi=500)                 
     return img
 
 # render 3D mol
 def  render_3d(smi):
     st.markdown("### Molecule Structure")
-    st.markdown("Below is the 3D structure of the molecule:")
-    mol = makeblock(smi)
-    render_mol_stick(mol)
+    with st.expander("3D Structure", expanded=True):
+        mol = makeblock(smi)
+        render_mol_stick(mol)
 
 # render 2D mol
 def render_2d(smi):
-    st.markdown("Below is the 2D structure of the molecule:")
-    img = create_mol_2d(smi)
-    st.image(img)
+    with st.expander("2D Structure", expanded=True):
+        img = create_mol_2d(smi)
+        st.image(img)

@@ -1,2 +1,2 @@
 ## Note
-Folder **_molecue_visualizaion_** is the app folder
+Folder **_molecuLe_visualizaion_** is the app folder
